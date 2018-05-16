@@ -1,5 +1,10 @@
 {
 "name": "banner-alert",
+"storybook":{
+ "url": "http://localhost:7007",
+ "kind": "react-native-bpk-component-banner-alert",
+ "story":"Default"
+},
 "workflow":[
   {"tap":[886, 1034]},
   {"wait":[1000]},

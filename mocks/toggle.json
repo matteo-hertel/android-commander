@@ -1,5 +1,10 @@
 {
 "name": "toggle",
+"storybook":{
+ "url": "http://localhost:7007",
+ "kind": "react-native-bpk-component-animate-height",
+ "story":"Default"
+},
 "workflow":[
   {"tap":[525, 953]},
   {"wait":[1000]},
