@@ -1,4 +1,5 @@
 const android = require("./platforms/android");
+const iosRecorder = require("./../src/platforms/ios/recorder.js");
 const utils = require("./utils");
 const program = require("commander");
 const StorybookController = require("./storybook-controller");
@@ -10,10 +11,11 @@ program
   .option("-f, --file <s>", "Component file definition")
   .parse(process.argv);
 
-main(program.file);
+const component = require(`./../mocks/${program.file}.json`);
 
-async function main(component) {
-  const definiton = require(`./../mocks/${component}.json`);
+Promise.all([androidProcess(component), iosProcess(component)]);
+
+async function androidProcess(definiton) {
   const video = android.video(definiton.name);
   await activateComponent(definiton.storybook);
   video.start();
@@ -29,8 +31,17 @@ async function main(component) {
   await utils.wait(1000);
   await video.get();
   await video.remove();
-  console.log(`Video file saved to ${definiton.name}`);
+  console.log(`Android video file saved to ${definiton.name}`);
 }
+
+async function iosProcess(definiton) {
+  const recorder = new iosRecorder(`${definiton.name}-ios.mp4`);
+  await recorder.startRecording();
+  await utils.wait(5200);
+  await recorder.finishRecording();
+  console.log(`iOS video file saved to ${definiton.name}`);
+}
+
 async function activateComponent(storybook) {
   const controller = new StorybookController(storybook.url);
   await controller.start();
