@@ -10,6 +10,8 @@ function video(filename) {
       "adb",
       "shell",
       "screenrecord",
+      " --bit-rate",
+      "6000000",
       `/sdcard/${filename}.mp4`
     );
   }
@@ -36,6 +38,6 @@ function video(filename) {
   };
 }
 module.exports = {
-  tap,
+  actions: { tap },
   video
 };
