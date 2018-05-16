@@ -3,6 +3,9 @@ const { rawCommand, command, wait } = require("./../utils");
 async function tap(x, y) {
   return command("adb", "shell", "input", "tap", x, y);
 }
+async function input(copy) {
+  return command("adb", "shell", "input", "text", copy.replace(" ", "%s"));
+}
 function video(filename) {
   let handler;
   function start() {
@@ -38,6 +41,6 @@ function video(filename) {
   };
 }
 module.exports = {
-  actions: { tap },
+  actions: { tap, input },
   video
 };

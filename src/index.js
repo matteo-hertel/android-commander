@@ -13,7 +13,10 @@ program
 
 const component = require(`./../mocks/${program.file}.json`);
 
-Promise.all([androidProcess(component), iosProcess(component)]);
+Promise.all([
+  androidProcess(component)
+  //iosProcess(component)
+]);
 
 async function androidProcess(definiton) {
   const video = android.video(definiton.name);

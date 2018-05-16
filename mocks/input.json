@@ -1,0 +1,15 @@
+{
+"name": "input",
+"storybook":{
+ "url": "http://localhost:7007",
+ "kind": "react-native-bpk-component-text-input",
+ "story":"docs:text-inputs"
+},
+"workflow":[
+  {"tap":[131, 300]},
+  {"input":["Design Offiste"]},
+  {"wait":[1000]},
+  {"tap":[99, 438]},
+  {"wait":[1000]}
+]
+}
