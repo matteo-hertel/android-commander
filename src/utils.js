@@ -6,7 +6,6 @@ function command(command, ...args) {
     cmd.stderr.on("data", data => {
       reject(data);
     });
-
     cmd.on("close", code => {
       resolve(code);
     });
